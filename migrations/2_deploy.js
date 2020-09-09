@@ -10,13 +10,13 @@ const toBn = (value) => new web3.utils.toBN(value)
 const toBnWithDecimals = (x, y = 18) => toBn((toBn(x).mul(toBn(10).pow(toBn(y)))).toString())
 
 module.exports = async (deployer) => {
-  await deployer.deploy(ERC20, toBnWithDecimals(1000))
-  const token1 = await ERC20.at(ERC20.address)
-  console.log(`Token 1 deployed: ${token1.address}`)
+  // await deployer.deploy(ERC20, toBnWithDecimals(1000))
+  // const token1 = await ERC20.at(ERC20.address)
+  // console.log(`Token 1 deployed: ${token1.address}`)
 
-  await deployer.deploy(ERC20, toBnWithDecimals(1000))
-  const token2 = await ERC20.at(ERC20.address)
-  console.log(`Token 2 deployed: ${token2.address}`)
+  // await deployer.deploy(ERC20, toBnWithDecimals(1000))
+  // const token2 = await ERC20.at(ERC20.address)
+  // console.log(`Token 2 deployed: ${token2.address}`)
 
   await deployer.deploy(WETH)
   console.log(`WETH deployed: ${WETH.address}`)
