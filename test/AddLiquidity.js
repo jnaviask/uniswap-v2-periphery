@@ -18,6 +18,12 @@ contract('UniswapV2Router02 Test', (accounts) => {
       await tokenA.approve(router.address, amount, { from: accounts[0] });
       console.log('Approving token B...');
       await tokenB.approve(router.address, amount, { from: accounts[0] });
+
+      // ensure approval worked
+      const allowanceA = await tokenA.allowance(accounts[0], router.address);
+      assert.equal(allowanceA.toString(), amount.toString());
+      const allowanceB = await tokenB.allowance(accounts[0], router.address);
+      assert.equal(allowanceB.toString(), amount.toString());
       
       // perform router call
       console.log('Adding liquidity...');
