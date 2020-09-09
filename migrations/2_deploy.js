@@ -3,8 +3,8 @@ const UniswapV2Router01 = artifacts.require("UniswapV2Router01");
 const ERC20 = artifacts.require("ERC20")
 const WETH = artifacts.require("WETH9")
 
-const FACTORY_ADDRESS = "0x42e2EE7Ba8975c473157634Ac2AF4098190fc741"
-const WRAPPED_ETH = "0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d"
+const FACTORY_ADDRESS = "0xF8cef78E923919054037a1D03662bBD884fF4edf"
+// const WRAPPED_ETH = "0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d"
 
 const toBn = (value) => new web3.utils.toBN(value)
 const toBnWithDecimals = (x, y = 18) => toBn((toBn(x).mul(toBn(10).pow(toBn(y)))).toString())
@@ -22,6 +22,8 @@ module.exports = async (deployer) => {
   console.log(`WETH deployed: ${WETH.address}`)
 
   await deployer.deploy(UniswapV2Router02, FACTORY_ADDRESS, WETH.address);
+  console.log(`Router deployed: ${UniswapV2Router02.address}`);
+
   //
   // await token1.approve(UniswapV2Router02.address, toBnWithDecimals(1000))
   // await token2.approve(UniswapV2Router02.address, toBnWithDecimals(1000))
